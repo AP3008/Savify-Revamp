@@ -1,40 +1,76 @@
-// components/Navbar.tsx
 "use client";
 
-import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   return (
-    <nav className="flex items-center justify-between px-6 py-4 bg-white shadow">
-      {/* Logo */}
-      <Link href="/" className="text-2xl font-bold text-blue-600">
-        Savify
-      </Link>
+      <nav
+          className="
+        fixed top-0 left-0 w-full z-50
+        px-10 py-5
+        flex items-center justify-between
+        text-white
+        pointer-events-auto
+      "
+      >
+        {/* Logo */}
+        <Link href="/" className="flex items-center">
+          <Image
+              src="/logo-savify-no-background.png"
+              alt="Savify logo"
+              width={80}
+              height={80}
+              priority
+              className="opacity-90"
+          />
+        </Link>
 
-      {/* Nav Links */}
-      <div className="flex items-center gap-4">
-        <Link href="/pricing" className="text-gray-700 hover:text-blue-600">
-          Pricing
-        </Link>
-        <Link href="/about" className="text-gray-700 hover:text-blue-600">
-          About
-        </Link>
+        {/* Nav Links */}
+        <div className="flex items-center gap-6 text-lg">
+          <Link href="#about" className="text-white/70 hover:text-white transition">
+            about us
+          </Link>
+          <Link href="#learn" className="text-white/70 hover:text-white transition">
+            learn
+          </Link>
+          <Link href="#prices" className="text-white/70 hover:text-white transition">
+            prices
+          </Link>
 
-        {/* Auth Buttons */}
-        <Link
-          href="/auth/login"
-          className="px-4 py-2 text-sm font-medium text-gray-700 border border-gray-300 rounded-md hover:bg-gray-100"
-        >
-          Log In
-        </Link>
-        <Link
-          href="/auth/signup"
-          className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
-        >
-          Sign Up
-        </Link>
-      </div>
-    </nav>
+          {/* Login */}
+          <Link
+              href="/auth/login"
+              className="
+            ml-4
+            px-6 py-1
+            rounded-full
+            bg-white/80
+            text-black
+            font-medium
+            hover:bg-white
+            transition
+          "
+          >
+            Login
+          </Link>
+
+          {/* Sign Up */}
+          <Link
+              href="/auth/signup"
+              className="
+            px-6 py-1
+            rounded-full
+            bg-indigo-400/90
+            text-black
+            font-medium
+            hover:bg-indigo-400
+            transition
+          "
+          >
+            Sign Up
+          </Link>
+        </div>
+      </nav>
   );
 }
