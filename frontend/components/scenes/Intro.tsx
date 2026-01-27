@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 
 export default function Intro() {
     const containerRef = useRef<HTMLDivElement | null>(null);
@@ -78,6 +79,13 @@ export default function Intro() {
         [0, 0.85, 0.95],
         [1, 1, 0]
     );
+
+    /* ---------------- SCROLL BUTTON ---------------- */
+    const scrollButtonOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+
+    const handleScrollClick = () => {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    };
 
     return (
         <section ref={containerRef} className="relative h-[600vh]">
@@ -186,6 +194,16 @@ export default function Intro() {
                             className="w-full h-auto"
                         />
                     </motion.div>
+
+                    {/* SCROLL INDICATOR BUTTON */}
+                    <motion.button
+                        style={{ opacity: scrollButtonOpacity }}
+                        onClick={handleScrollClick}
+                        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-40 p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all animate-bounce"
+                        aria-label="Scroll to next section"
+                    >
+                        <ChevronDown className="w-6 h-6 text-white" />
+                    </motion.button>
 
                 </div>
             </motion.div>
