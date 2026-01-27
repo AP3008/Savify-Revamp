@@ -35,7 +35,7 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="relative py-20 px-6 overflow-hidden">
+    <section className="relative py-20 px-6 bg-gradient-to-b from-brand-charcoal to-brand-blue overflow-hidden">
       {/* Decorative glow */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-brand-lightblue/10 rounded-full blur-3xl"></div>
 

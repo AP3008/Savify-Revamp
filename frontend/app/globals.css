@@ -8,19 +8,7 @@ html {
 }
 
 body {
-  @apply text-base-black font-sans;
-  background: linear-gradient(
-    180deg,
-    #162447 0%,      /* navy - intro */
-    #2B2F3A 15%,     /* charcoal - features */
-    #162447 30%,     /* navy - slideshow */
-    #4A6FA5 45%,     /* blue - marquee */
-    #162447 60%,     /* navy - calculator */
-    #2B2F3A 75%,     /* charcoal - FAQ */
-    #4A6FA5 85%,     /* blue - footer start */
-    #162447 100%     /* navy - footer end */
-  );
-  background-attachment: fixed;
+  @apply bg-brand-navy text-base-black font-sans;
   overscroll-behavior-y: none; /* Prevent mobile scroll bounce during animation */
 }
 

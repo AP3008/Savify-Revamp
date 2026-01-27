@@ -4,7 +4,7 @@ export default function WhySavifyMarquee() {
   const text = "Why Savify • Why Savify • Why Savify • Why Savify • Why Savify • ";
 
   return (
-    <div className="overflow-hidden py-16 border-y border-brand-lightblue/20">
+    <div className="overflow-hidden bg-brand-blue py-16 border-y border-brand-lightblue/20">
       <div className="marquee">
         <div className="track">
           <span className="marquee-text">{text}</span>
