@@ -5,7 +5,7 @@ import { Mail } from "lucide-react";
 
 export default function Footer() {
   return (
-    <section className="relative py-24 px-6 text-center bg-gradient-to-b from-brand-blue via-brand-charcoal to-brand-navy overflow-hidden">
+    <section className="relative py-24 px-6 text-center overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-brand-lightblue/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-blue/20 rounded-full blur-3xl"></div>

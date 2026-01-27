@@ -36,7 +36,7 @@ export default function SavingsCalculator() {
   const maxValue = Math.max(...chartData, 1);
 
   return (
-    <section className="relative py-20 px-6 bg-gradient-to-b from-brand-blue via-brand-navy to-brand-charcoal overflow-hidden">
+    <section className="relative py-20 px-6 overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-lightblue/10 rounded-full blur-3xl"></div>
 

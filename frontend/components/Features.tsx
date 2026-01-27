@@ -20,7 +20,7 @@ export default function Features() {
   ];
 
   return (
-    <section id="why-savify" className="relative py-24 px-6 md:px-12 lg:px-24 bg-gradient-to-b from-brand-navy via-brand-charcoal to-brand-charcoal overflow-hidden">
+    <section id="why-savify" className="relative py-24 px-6 md:px-12 lg:px-24 overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{

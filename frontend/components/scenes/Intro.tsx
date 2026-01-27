@@ -84,10 +84,11 @@ export default function Intro() {
     const scrollButtonOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
     const handleScrollClick = () => {
-        // Scroll past the entire intro (600vh) to show Features section at top
-        // This gives a seamless transition from intro to content
-        const targetScroll = window.innerHeight * 6;
-        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+        // Scroll to Why Savify section at consistent speed
+        const whySavifySection = document.getElementById('why-savify');
+        if (whySavifySection) {
+            whySavifySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     };
 
     return (
