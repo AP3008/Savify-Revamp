@@ -58,19 +58,29 @@ export default function Intro() {
     /* ---------------- PHONE ---------------- */
     const phoneY = useTransform(scrollYProgress, [0.15, 0.45], [600, 0]);
     const phoneRotate = useTransform(scrollYProgress, [0.45, PHASE_PHONE_ROTATE_END], [0, -90]);
+
+    // Zoom into the phone after rotation completes
     const phoneScale = useTransform(
         scrollYProgress,
-        [0.55, 0.8],
-        [1, 1.8]
+        [0.55, 0.8, 0.9, 0.95],
+        [1, 1.8, 8, 15]
     );
+
     const phoneOpacity = useTransform(
         scrollYProgress,
-        [PHASE_BRAND_END, PHASE_PHONE_RISE_END],
-        [0, 1]
+        [PHASE_BRAND_END, PHASE_PHONE_RISE_END, 0.92, 0.98],
+        [0, 1, 1, 0]
+    );
+
+    /* ---------------- GRADIENT (fades out as we enter phone) ---------------- */
+    const gradientOpacity = useTransform(
+        scrollYProgress,
+        [0, 0.8, 0.95],
+        [0.95, 0.95, 0]
     );
 
     return (
-        <section ref={containerRef} className="relative h-[500vh]">
+        <section ref={containerRef} className="relative h-[600vh]">
             {/* Sticky Scene */}
             <div className="sticky top-0 h-screen relative overflow-hidden text-white">
 
@@ -94,7 +104,10 @@ export default function Intro() {
                 </motion.div>
 
                 {/* GRADIENT OVERLAY */}
-                <div className="absolute inset-0 z-10 bg-brand-gradient opacity-95" />
+                <motion.div
+                    style={{ opacity: gradientOpacity }}
+                    className="absolute inset-0 z-10 bg-brand-gradient"
+                />
 
                 {/* CONTENT */}
                 <div className="relative z-20 h-full">

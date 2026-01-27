@@ -1,7 +1,7 @@
 export default function Features() {
     return (
         <>
-            <section id="about" className="py-32 bg-lightgray-3 text-center">
+            <section id="about" className="py-32 bg-white text-center">
                 <h3 className="text-4xl font-bold mb-6">About Us</h3>
                 <p className="max-w-3xl mx-auto text-grayblue-2 text-lg">
                     Savify helps students and young adults build better saving habits with
