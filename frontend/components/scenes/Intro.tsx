@@ -59,24 +59,17 @@ export default function Intro() {
     const phoneY = useTransform(scrollYProgress, [0.15, 0.45], [600, 0]);
     const phoneRotate = useTransform(scrollYProgress, [0.45, PHASE_PHONE_ROTATE_END], [0, -90]);
 
-    // Zoom into the phone after rotation completes
+    // Zoom into the phone after rotation completes - dramatic zoom to "enter" the screen
     const phoneScale = useTransform(
         scrollYProgress,
-        [0.55, 0.8, 0.9, 0.95],
-        [1, 1.8, 8, 15]
+        [0.55, 0.75, 0.85, 0.92],
+        [1, 2, 12, 40]
     );
 
     const phoneOpacity = useTransform(
         scrollYProgress,
-        [PHASE_BRAND_END, PHASE_PHONE_RISE_END, 0.92, 0.98],
+        [PHASE_BRAND_END, PHASE_PHONE_RISE_END, 0.88, 0.92],
         [0, 1, 1, 0]
-    );
-
-    /* ---------------- GRADIENT (fades out as we enter phone) ---------------- */
-    const gradientOpacity = useTransform(
-        scrollYProgress,
-        [0, 0.8, 0.95],
-        [0.95, 0.95, 0]
     );
 
     return (
@@ -103,11 +96,8 @@ export default function Intro() {
                     />
                 </motion.div>
 
-                {/* GRADIENT OVERLAY */}
-                <motion.div
-                    style={{ opacity: gradientOpacity }}
-                    className="absolute inset-0 z-10 bg-brand-gradient"
-                />
+                {/* GRADIENT OVERLAY - stays visible, no white flash */}
+                <div className="absolute inset-0 z-10 bg-brand-gradient opacity-95" />
 
                 {/* CONTENT */}
                 <div className="relative z-20 h-full">
