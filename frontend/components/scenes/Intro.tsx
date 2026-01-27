@@ -84,9 +84,9 @@ export default function Intro() {
     const scrollButtonOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
     const handleScrollClick = () => {
-        // Scroll to 95% of container height (where animation completes and user "enters" the phone)
-        // Container is h-[600vh], so 0.95 × 600vh = 5.7 viewport heights
-        const targetScroll = window.innerHeight * 5.7;
+        // Scroll past the entire intro (600vh) to show Features section at top
+        // This gives a seamless transition from intro to content
+        const targetScroll = window.innerHeight * 6;
         window.scrollTo({ top: targetScroll, behavior: 'smooth' });
     };
 
