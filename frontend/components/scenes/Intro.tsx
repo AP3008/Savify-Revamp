@@ -84,7 +84,10 @@ export default function Intro() {
     const scrollButtonOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
     const handleScrollClick = () => {
-        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+        // Scroll to 95% of container height (where animation completes and user "enters" the phone)
+        // Container is h-[600vh], so 0.95 × 600vh = 5.7 viewport heights
+        const targetScroll = window.innerHeight * 5.7;
+        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
     };
 
     return (
