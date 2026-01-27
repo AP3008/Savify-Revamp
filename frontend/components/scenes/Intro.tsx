@@ -72,10 +72,20 @@ export default function Intro() {
         [0, 1, 1, 0]
     );
 
+    /* ---------------- SCENE FADEOUT ---------------- */
+    const sceneOpacity = useTransform(
+        scrollYProgress,
+        [0, 0.85, 0.95],
+        [1, 1, 0]
+    );
+
     return (
         <section ref={containerRef} className="relative h-[600vh]">
             {/* Sticky Scene */}
-            <div className="sticky top-0 h-screen relative overflow-hidden text-white">
+            <motion.div
+                style={{ opacity: sceneOpacity }}
+                className="sticky top-0 h-screen relative overflow-hidden text-white"
+            >
 
                 {/* ART BACKGROUND */}
                 <motion.div
@@ -178,7 +188,7 @@ export default function Intro() {
                     </motion.div>
 
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 }
