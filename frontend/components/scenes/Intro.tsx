@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 
 export default function Intro() {
     const containerRef = useRef<HTMLDivElement | null>(null);
@@ -58,21 +59,45 @@ export default function Intro() {
     /* ---------------- PHONE ---------------- */
     const phoneY = useTransform(scrollYProgress, [0.15, 0.45], [600, 0]);
     const phoneRotate = useTransform(scrollYProgress, [0.45, PHASE_PHONE_ROTATE_END], [0, -90]);
+
+    // Zoom into the phone after rotation completes - dramatic zoom to "enter" the screen
     const phoneScale = useTransform(
         scrollYProgress,
-        [0.55, 0.8],
-        [1, 1.8]
-    );
-    const phoneOpacity = useTransform(
-        scrollYProgress,
-        [PHASE_BRAND_END, PHASE_PHONE_RISE_END],
-        [0, 1]
+        [0.55, 0.75, 0.85, 0.92],
+        [1, 2, 12, 40]
     );
 
+    const phoneOpacity = useTransform(
+        scrollYProgress,
+        [PHASE_BRAND_END, PHASE_PHONE_RISE_END, 0.88, 0.92],
+        [0, 1, 1, 0]
+    );
+
+    /* ---------------- SCENE FADEOUT ---------------- */
+    const sceneOpacity = useTransform(
+        scrollYProgress,
+        [0, 0.85, 0.95],
+        [1, 1, 0]
+    );
+
+    /* ---------------- SCROLL BUTTON ---------------- */
+    const scrollButtonOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+
+    const handleScrollClick = () => {
+        // Scroll to Why Savify section at consistent speed
+        const whySavifySection = document.getElementById('why-savify');
+        if (whySavifySection) {
+            whySavifySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
     return (
-        <section ref={containerRef} className="relative h-[500vh]">
+        <section ref={containerRef} className="relative h-[600vh]">
             {/* Sticky Scene */}
-            <div className="sticky top-0 h-screen relative overflow-hidden text-white">
+            <motion.div
+                style={{ opacity: sceneOpacity }}
+                className="sticky top-0 h-screen relative overflow-hidden text-white"
+            >
 
                 {/* ART BACKGROUND */}
                 <motion.div
@@ -93,7 +118,7 @@ export default function Intro() {
                     />
                 </motion.div>
 
-                {/* GRADIENT OVERLAY */}
+                {/* GRADIENT OVERLAY - stays visible, no white flash */}
                 <div className="absolute inset-0 z-10 bg-brand-gradient opacity-95" />
 
                 {/* CONTENT */}
@@ -174,8 +199,18 @@ export default function Intro() {
                         />
                     </motion.div>
 
+                    {/* SCROLL INDICATOR BUTTON */}
+                    <motion.button
+                        style={{ opacity: scrollButtonOpacity }}
+                        onClick={handleScrollClick}
+                        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-40 p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all animate-bounce"
+                        aria-label="Scroll to next section"
+                    >
+                        <ChevronDown className="w-6 h-6 text-white" />
+                    </motion.button>
+
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 }
