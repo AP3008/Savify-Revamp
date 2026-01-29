@@ -40,18 +40,18 @@ export default function FeatureSlideshow() {
       {/* Subtle glow effect */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-brand-lightblue/10 rounded-full blur-3xl"></div>
 
-      <div className="relative z-10 max-w-6xl mx-auto text-center mb-12">
-        <span className="inline-block bg-brand-blue/30 border border-brand-lightblue/40 text-white text-sm font-semibold px-5 py-2 rounded-full mb-4 backdrop-blur-sm">
+        <div className="relative z-10 max-w-6xl mx-auto text-center mb-12">
+        <span className="inline-block bg-brand-lightblue/20 text-white text-sm font-semibold px-5 py-2 rounded-full mb-4 shadow-lg hover:bg-brand-lightblue/30 transition-all duration-200">
           Benefits
         </span>
-        <h2 className="text-4xl md:text-5xl font-bold text-white">
-          Simplify Your Finances, Savify Your Future.
-        </h2>
-      </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white">
+                Simplify Your Finances, Savify Your Future.
+            </h2>
+        </div>
 
-      <div
-        className={`relative z-10 max-w-5xl mx-auto bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 p-8 md:p-10 transition-opacity duration-300 ${
-          fadeOut ? "opacity-0" : "opacity-100"
+        <div
+            className={`relative z-10 max-w-5xl mx-auto bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 p-8 md:p-10 transition-opacity duration-300 ${
+                fadeOut ? "opacity-0" : "opacity-100"
         }`}
       >
         <div className="grid md:grid-cols-2 gap-10 items-center">
