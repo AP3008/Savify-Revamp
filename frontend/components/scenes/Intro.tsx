@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
 import { useRef, useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
@@ -106,10 +106,17 @@ export default function Intro() {
     const isMobile = breakpoint === "xs" || breakpoint === "sm";
     const isTablet = breakpoint === "md";
 
-    const { scrollYProgress } = useScroll({
+    // Fallback for SSR/pre-hydration - starts at 0 (initial scroll state)
+    const fallbackScrollProgress = useMotionValue(0);
+
+    // Always call useScroll (Rules of Hooks), but handle unhydrated state
+    const { scrollYProgress: realScrollProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end start"],
     });
+
+    // Use fallback until mounted, then switch to real scroll tracking
+    const scrollYProgress = hasMounted ? realScrollProgress : fallbackScrollProgress;
 
     /* ---------------- SCROLL PHASES ---------------- */
     const PHASE_BRAND_END = 0.18;
@@ -235,17 +242,8 @@ export default function Intro() {
         return "w-[clamp(320px,35vw,700px)]";
     };
 
-    // Prevent hydration mismatch by not rendering viewport-dependent content until mounted
-    if (!hasMounted) {
-        return (
-            <section className="relative h-[600vh]">
-                <div className="sticky top-0 h-screen relative overflow-hidden text-white">
-                    <div className="absolute inset-0 z-10 bg-gradient-to-br from-brand-charcoal via-brand-navy to-brand-blue" />
-                </div>
-            </section>
-        );
-    }
-
+    // Always render same structure to prevent hydration mismatch
+    // Use fallback values for SSR, real values after mount
     return (
         <section
             ref={containerRef}
@@ -342,7 +340,7 @@ export default function Intro() {
                             <motion.div
                                 style={{
                                     y: phoneY,
-                                    rotate: isTablet ? phoneRotate : 0,
+                                    rotate: isTablet ? phoneRotate : -12,
                                     scale: phoneScale,
                                     opacity: phoneOpacity,
                                 }}

@@ -36,18 +36,18 @@ export default function SavingsCalculator() {
   const maxValue = Math.max(...chartData, 1);
 
   return (
-    <section className="relative py-20 px-6 bg-gradient-to-b from-brand-blue to-brand-charcoal overflow-hidden">
+    <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-brand-blue to-brand-charcoal overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-lightblue/10 rounded-full blur-3xl"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-6 sm:mb-8 md:mb-12">
           Savings Growth Calculator
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
           {/* Left */}
-          <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 shadow-xl space-y-4">
+          <div className="bg-white/10 backdrop-blur-md p-4 sm:p-6 md:p-8 rounded-2xl border border-white/20 shadow-xl space-y-4">
             <label className="block font-semibold text-white text-sm">Initial Deposit</label>
             <input
               type="number"
@@ -106,11 +106,11 @@ export default function SavingsCalculator() {
           </div>
 
           {/* Right */}
-          <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 shadow-xl">
+          <div className="bg-white/10 backdrop-blur-md p-4 sm:p-6 md:p-8 rounded-2xl border border-white/20 shadow-xl">
             <h3 className="text-2xl font-bold text-brand-blue text-center mb-4">
               Potential Future Balance
             </h3>
-            <p className="text-5xl font-bold text-white text-center mb-8">
+            <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center mb-8">
               ${futureBalance.toFixed(2)}
             </p>
 
