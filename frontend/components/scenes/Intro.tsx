@@ -183,7 +183,7 @@ export default function Intro() {
     const phoneRotate = useTransform(
         scrollYProgress,
         [0.45, PHASE_PHONE_ROTATE_END],
-        [0, isMobile ? 0 : isTablet ? -45 : -90]
+        [0, isMobile ? -12 : isTablet ? -45 : -90]
     );
 
     const phoneScale = useTransform(
@@ -340,7 +340,7 @@ export default function Intro() {
                             <motion.div
                                 style={{
                                     y: phoneY,
-                                    rotate: isTablet ? phoneRotate : -12,
+                                    rotate: phoneRotate,
                                     scale: phoneScale,
                                     opacity: phoneOpacity,
                                 }}
